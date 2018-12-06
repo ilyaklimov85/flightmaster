@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Stateless
 public class UserEJB {
-	@PersistenceContext(unitName = "userPU")
+	@PersistenceContext(unitName = "flightmasterPU")
 	EntityManager em;
 	
 	@NotNull
@@ -26,6 +26,8 @@ public class UserEJB {
 		em.remove(user);
 	}
 	
-	
-
+	public User findUserByLogin(@NotNull String login){
+		return em.createNamedQuery("", User.class).setParameter("login", login).getSingleResult();
+		
+	}
 }
