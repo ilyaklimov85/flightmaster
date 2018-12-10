@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="layout.xhtml">
+	<ui:define name="content">
+		<h1>Please fill in the following information</h1>
+		<h:form id="registerForm">
+			<h:panelGrid columns="3">
+				<h:outputLabel value="First Name : " />
+				<h:inputText id="firstName"
+					value="#{registrationController.firstName}" />
+				<h:message for="firstName" errorStyle="color:Red" />
+
+				<h:outputLabel value="Last Name : " />
+				<h:inputText id="lastName"
+					value="#{registrationController.lastName}" />
+				<h:message for="lastName" errorStyle="color:Red" />
+
+				<h:outputLabel value="Username : " />
+				<h:inputText id="username"
+					value="#{registrationController.username}" />
+				<h:message for="username" errorStyle="color:Red" />
+
+				<h:outputLabel value="Password : " />
+				<h:inputSecret id="password"
+					value="#{registrationController.password}" />
+				<h:message for="password" errorStyle="color:Red" />
+
+				<h:outputLabel value="Confirm Password : " />
+				<h:inputSecret id="confirmPassword"
+					value="#{registrationController.confirmPassword}" />
+				<h:message for="confirmPassword" errorStyle="color:Red" />
+
+				<h:commandButton id="registerButton" value="Submit"
+					action="#{registrationController.registerUser}" />
+				<h:message for="registerButton" errorStyle="color:Red" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

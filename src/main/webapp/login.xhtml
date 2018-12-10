@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:h="http://java.sun.com/jsf/html">
-	<head>
-	<meta charset="UTF-8">
-	<title>Flightmaster</title>
-</head>
-	<body>
-	    <h:form>
-	      <h:panelGrid columns="2">
-	        <h:outputLabel value="Username : "/>
-	        <h:inputText value="#{bookController.book.title}"/>
-	
-	        <h:outputLabel value="Password : "/>
-	        <h:inputSecret value="#{bookController.book.price}"/>
-	      </h:panelGrid>
-	
-	      <h:commandButton value="Login" action="#{bookController.doCreateBook}"/>
-	
-	    </h:form>
-	
-	</body>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="layout.xhtml">
+	<ui:define name="content">
+		<h:form id="loginForm">
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Username : " />
+				<h:inputText id="username" value="#{loginController.login}" />
+				<h:message for="username" errorStyle="color:Red" />
+
+				<h:outputLabel value="Password : " />
+				<h:inputSecret id="password" value="#{loginController.password}" />
+				<h:message for="password" errorStyle="color:Red" />
+			</h:panelGrid>
+
+			<h:commandButton id="loginButton" value="Login" action="#{loginController.loginUser}" />
+			<h:message for="loginButton" errorStyle="color:Red" />
+			<br />
+			<h:link outcome="register.xhtml" value="Register.." />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

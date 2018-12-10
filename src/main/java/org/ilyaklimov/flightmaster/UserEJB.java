@@ -1,5 +1,7 @@
 package org.ilyaklimov.flightmaster;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,23 +13,24 @@ public class UserEJB {
 	EntityManager em;
 	
 	@NotNull
-	public User createUser(@NotNull User user){
+	public AppUser createUser(@NotNull AppUser user){
 		em.persist(user);
 		return user;
 	}
 	
 	@NotNull
-	public User updateUser(@NotNull User user){
+	public AppUser updateUser(@NotNull AppUser user){
 		em.merge(user);
 		return user;
 	}
 	
-	public void deleteUser(@NotNull User user){
+	public void deleteUser(@NotNull AppUser user){
 		em.remove(user);
 	}
 	
-	public User findUserByLogin(@NotNull String login){
-		return em.createNamedQuery("", User.class).setParameter("login", login).getSingleResult();
-		
+	public List<AppUser> findUsersByLogin(@NotNull String login) {
+		return em.createNamedQuery(AppUser.FIND_BY_LOGIN, AppUser.class)
+				.setParameter("login", login).getResultList();
+
 	}
 }

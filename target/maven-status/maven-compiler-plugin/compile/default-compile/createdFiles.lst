@@ -1,3 +1,9 @@
+org\ilyaklimov\flightmaster\AppUser.class
+org\ilyaklimov\flightmaster\UserRole.class
+org\ilyaklimov\flightmaster\AuthenticationContext.class
 org\ilyaklimov\flightmaster\UserEJB.class
-org\ilyaklimov\flightmaster\User_.class
-org\ilyaklimov\flightmaster\User.class
+org\ilyaklimov\flightmaster\AppProperties.class
+org\ilyaklimov\flightmaster\AlphaNumeric.class
+org\ilyaklimov\flightmaster\AppUser_.class
+org\ilyaklimov\flightmaster\LoginController.class
+org\ilyaklimov\flightmaster\RegistrationController.class

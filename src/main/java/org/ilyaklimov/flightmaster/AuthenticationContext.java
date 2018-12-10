@@ -1,18 +1,25 @@
 package org.ilyaklimov.flightmaster;
 
+import java.io.Serializable;
+
 import javax.enterprise.context.SessionScoped;
 import javax.validation.constraints.NotNull;
 
 @SessionScoped
-public class AuthenticationContext {
+public class AuthenticationContext implements Serializable{
 	
-	private User loggedInUser;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4207336100712519353L;
+	
+	private AppUser loggedInUser;
 
-	public User getLoggedInUser() {
+	public AppUser getLoggedInUser() {
 		return loggedInUser;
 	}
 
-	public void setLoggedInUser(@NotNull User loggedInUser) {
+	public void setLoggedInUser(@NotNull AppUser loggedInUser) {
 		this.loggedInUser = loggedInUser;
 	}
 	

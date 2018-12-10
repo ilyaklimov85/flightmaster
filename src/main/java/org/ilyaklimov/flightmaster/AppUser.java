@@ -8,22 +8,33 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
-@NamedQuery(name = User.FIND_BY_LOGIN, query = "SELECT u FROM User u WHERE u.login = :login")
-public class User implements Serializable{
+@NamedQuery(name = AppUser.FIND_BY_LOGIN, query = "SELECT u FROM AppUser u WHERE u.login = :login")
+public class AppUser implements Serializable{
+	private static final long serialVersionUID = 5319245803062899009L;
+
 	public static final String FIND_BY_LOGIN = "User.findByLogin";
 	
 	@Id @GeneratedValue
 	private int id;
-	private String name;
+	@AlphaNumeric
+	private String firstName;
+	@AlphaNumeric
+	private String lastName;
+	@NotBlank
 	private String login;
+	@NotBlank
 	private String password;
+	@NotNull
 	private UserRole role;
 	
-	public User(){};
+	public AppUser(){};
 	
-	public User(@NotNull String name, @NotNull String login, @NotNull String password, @NotNull UserRole role){
-		this.name = name;
+	public AppUser(String firstName, String lastName, String login, String password, UserRole role){
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.login = login;
 		this.password = password;
 		this.role = role;
@@ -31,10 +42,6 @@ public class User implements Serializable{
 	
 	public int getId() {
 		return id;
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public String getLogin() {
@@ -47,5 +54,13 @@ public class User implements Serializable{
 
 	public UserRole getRole() {
 		return role;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 }
