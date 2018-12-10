@@ -7,20 +7,24 @@
   <persistence-unit name="flightmasterPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>org.ilyaklimov.flightmaster.AppUser</class>
-    <properties>
-      <!-- property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/flightmaster;create=true"/>
-      <property name="javax.persistence.jdbc.user" value="APP"/>
-      <property name="javax.persistence.jdbc.password" value="APP"/>
-      <property name="eclipselink.logging.level" value="INFO"/-->
- 
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/flightmaster" />
-      <property name="javax.persistence.jdbc.user" value="postgres" />
-      <property name="javax.persistence.jdbc.password" value="" />
-       
-    </properties>
+	<properties>
+		<!-- property name="javax.persistence.schema-generation.database.action" 
+			value="drop-and-create"/> <property name="javax.persistence.jdbc.driver" 
+			value="org.apache.derby.jdbc.ClientDriver"/> <property name="javax.persistence.jdbc.url" 
+			value="jdbc:derby://localhost:1527/flightmaster;create=true"/> <property 
+			name="javax.persistence.jdbc.user" value="APP"/> <property name="javax.persistence.jdbc.password" 
+			value="APP"/> <property name="eclipselink.logging.level" value="INFO"/ -->
+
+		
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/flightmaster" />
+			<property name="javax.persistence.jdbc.user" value="app" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+		
+
+	</properties>
   </persistence-unit>
 
   <!-- persistence-unit name="flightmasterPU" transaction-type="JTA">

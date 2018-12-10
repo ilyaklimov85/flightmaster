@@ -5,7 +5,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.ilyaklimov.flightmaster.UserRole;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-12-10T15:20:37")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-12-10T15:56:17")
 @StaticMetamodel(AppUser.class)
 public class AppUser_ { 
 
