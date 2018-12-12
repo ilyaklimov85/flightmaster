@@ -37,9 +37,16 @@ public class RegistrationController {
 			FacesContext.getCurrentInstance().addMessage("registerForm:registerButton", facesMessage);
 			return null;
 		}
+		
+		if (!userEJB.findUsersByLogin(username).isEmpty()) {
+			String property = appProperties.getProperty("loginIsTaken");
+			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, property, property);
+			FacesContext.getCurrentInstance().addMessage("registerForm:registerButton", facesMessage);
+			return null;
+		}
+		
 		AppUser user = new AppUser(firstName, lastName, username, password, UserRole.CUSTOMER);
 		userEJB.createUser(user);
-		
 		return "login.xhtml";
 	}
 	

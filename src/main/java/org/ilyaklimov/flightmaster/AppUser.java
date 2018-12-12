@@ -3,31 +3,35 @@ package org.ilyaklimov.flightmaster;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@NamedQuery(name = AppUser.FIND_BY_LOGIN, query = "SELECT u FROM AppUser u WHERE u.login = :login")
+@NamedQueries(value = { 
+		@NamedQuery(name = AppUser.FIND_BY_LOGIN, query = "SELECT u FROM AppUser u WHERE u.login = :login"), 
+		@NamedQuery(name = AppUser.FIND_ALL, query = "SELECT u FROM AppUser u")
+})
 public class AppUser implements Serializable{
 	private static final long serialVersionUID = 5319245803062899009L;
 
 	public static final String FIND_BY_LOGIN = "User.findByLogin";
-	
-	@Id @GeneratedValue
-	private int id;
+	public static final String FIND_ALL = "User.findAll";
+
 	@AlphaNumeric
 	private String firstName;
 	@AlphaNumeric
 	private String lastName;
-	@NotBlank
+	@Id
 	private String login;
 	@NotBlank
 	private String password;
-	@NotNull
+	@NotNull @Enumerated(EnumType.STRING)
 	private UserRole role;
 	
 	public AppUser(){};
@@ -38,10 +42,6 @@ public class AppUser implements Serializable{
 		this.login = login;
 		this.password = password;
 		this.role = role;
-	}
-	
-	public int getId() {
-		return id;
 	}
 
 	public String getLogin() {

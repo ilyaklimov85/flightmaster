@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-</head>
-<body>Home page
-</body>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<ui:composition template="layout.xhtml">
+	<ui:define name="content">
+		<h:outputText style="font-size:large"
+			value="Welcome #{authenticationContext.loggedInUser.firstName} #{authenticationContext.loggedInUser.lastName}" />
+		<br />
+		<c:if
+			test="#{authenticationContext.loggedInUser.role == 'ADMINISTRATOR'}">
+			<h:link outcome="manageUsers.xhtml" value="Manage Users" />
+			<br />
+		</c:if>
+		<c:if
+			test="#{authenticationContext.loggedInUser.role == 'ADMINISTRATOR' || authenticationContext.loggedInUser.role == 'OPERATOR'}">
+			<h:link outcome="manageCompanies.xhtml" value="Manage Companies" />
+			<br />
+		</c:if>
+		<h:link outcome="myReservations.xhtml" value="My Reservations" />
+	</ui:define>
+</ui:composition>
 </html>

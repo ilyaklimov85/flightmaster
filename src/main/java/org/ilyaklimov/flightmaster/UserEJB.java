@@ -3,14 +3,16 @@ package org.ilyaklimov.flightmaster;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.constraints.NotNull;
 
+@Named
 @Stateless
 public class UserEJB {
 	@PersistenceContext(unitName = "flightmasterPU")
-	EntityManager em;
+	private EntityManager em;
 	
 	@NotNull
 	public AppUser createUser(@NotNull AppUser user){
@@ -32,5 +34,9 @@ public class UserEJB {
 		return em.createNamedQuery(AppUser.FIND_BY_LOGIN, AppUser.class)
 				.setParameter("login", login).getResultList();
 
+	}
+	
+	public List<AppUser> findAllUsers(){
+		return em.createNamedQuery(AppUser.FIND_ALL, AppUser.class).getResultList();
 	}
 }

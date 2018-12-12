@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<ui:composition template="layout.xhtml">
+	<ui:define name="content">
+		<c:forEach var="user" items="#{userEJB.findAllUsers}">
+			<h:outputText value="#{user.login}" />
+		</c:forEach>
+	</ui:define>
+</ui:composition>
+</html>

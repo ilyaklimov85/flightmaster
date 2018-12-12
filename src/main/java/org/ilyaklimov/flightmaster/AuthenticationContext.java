@@ -3,8 +3,10 @@ package org.ilyaklimov.flightmaster;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
+@Named
 @SessionScoped
 public class AuthenticationContext implements Serializable{
 	

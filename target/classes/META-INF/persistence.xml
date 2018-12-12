@@ -5,7 +5,8 @@
              version="2.1">
 
   <persistence-unit name="flightmasterPU" transaction-type="JTA">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <!-- provider>org.eclipse.persistence.jpa.PersistenceProvider</provider-->
+    <jta-data-source>jdbc/flightmaster</jta-data-source>
     <class>org.ilyaklimov.flightmaster.AppUser</class>
 	<properties>
 		<!-- property name="javax.persistence.schema-generation.database.action" 
